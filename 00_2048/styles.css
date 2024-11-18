@@ -11,7 +11,11 @@
     --cell32: #F59563;
     --cell64: #F65E3B;
     --cell128: #EDCF72;
-    
+    --cell256: #EDCC61;
+    --cell512: #EDC850;
+    --cell1024: #EDC53F;
+    --cell2048: #EDC22E;
+
 }
 
 * {

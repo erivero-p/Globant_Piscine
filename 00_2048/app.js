@@ -70,7 +70,7 @@ function handleGame() {
             addNewNumber(1);
             renderGrid();
             score.textContent = actualScore;
-
+            handleGameOver();
         }
     });
 }
@@ -140,5 +140,34 @@ function moveY(direction) {
     return (moved);
 }
 
+function handleGameOver() {
+    if (matrix.includes(2048)) {
+        alert('You win!');
+        initGame();
+    } else if (!matrix.includes(null)) {
+        if (checkGameOver()) {
+            console.log(JSON.stringify(matrix));
+            alert('Game Over!');
+            initGame();
+        }
+    }
+}
+
+function checkGameOver() {
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            if (matrix[i * 4 + j] === null) {
+                return false; // If there's an empty cell, the game is not over
+            }
+            if (j < 3 && matrix[i * 4 + j] === matrix[i * 4 + j + 1]) {
+                return false; // Check horizontally
+            }
+            if (i < 3 && matrix[i * 4 + j] === matrix[(i + 1) * 4 + j]) {
+                return false; // Check vertically
+            }
+        }
+    }
+    return true;
+}
 
 initGame();
