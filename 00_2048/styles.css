@@ -1,0 +1,103 @@
+:root {
+    --bg-primary: #FAF8EF;
+    --bg-secondary: #CDC1B4;
+    --grid: #BBADA0;
+    --txt-primary: #776E65;
+    --cell0: #CDC1B4;
+    --cell2: #EEE4DA;
+    --cell4: #EDE0C8;
+    --cell8: #F2B179;
+    --cell16: #F59563;
+    --cell32: #F59563;
+    --cell64: #F65E3B;
+    --cell128: #EDCF72;
+    
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+main {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+    margin-bottom: 20px;
+    color: var(--txt-primary);
+    font-weight: bolder;
+}
+
+.score-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.score, .restart {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.score {
+    background-color: var(--bg-secondary);
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    background-color: var(--grid);
+    padding: 10px;
+    border-radius: 10px;
+    width: 400px;
+}
+
+.cell {
+    background-color: var(--cell0);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--txt-primary);
+}
+
+.cell p {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+#restart-btn {
+    background-color: #8f7a66;
+    cursor: pointer;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    display: inline-block;
+}
