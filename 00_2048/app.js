@@ -26,6 +26,8 @@ function renderGrid() {
             cell.style.backgroundColor = colorMap[matrix[i]];
             if (matrix[i] > 4)
                 cell.style.color = 'white';
+            cell.classList.add('new');
+            setTimeout(() => cell.classList.remove('new'), 300); // Remove the 'new' class after the transition
         }
         gridContainer.appendChild(cell);
     }
@@ -155,9 +157,6 @@ function handleGameOver() {
 function checkGameOver() {
     for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 4; j++) {
-            if (matrix[i * 4 + j] === null) {
-                return false; // If there's an empty cell, the game is not over
-            }
             if (j < 3 && matrix[i * 4 + j] === matrix[i * 4 + j + 1]) {
                 return false; // Check horizontally
             }
