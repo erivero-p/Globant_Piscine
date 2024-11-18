@@ -46,7 +46,6 @@ function addNewNumber(total) {
 function initGame() {
     matrix.fill(null);
     addNewNumber(2);
-    handleGame();
 }
 
 // restart event listener
@@ -171,3 +170,4 @@ function checkGameOver() {
 }
 
 initGame();
+handleGame();
