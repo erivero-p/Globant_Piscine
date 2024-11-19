@@ -34,5 +34,11 @@ function setupSearchForm() {
     });
 }
 
+
+function authenticate() {
+    console.log('Authenticating...');
+    window.location.href = `${SERVER_URL}/auth/unsplash`;
+}
+
 // Initialize the form event listener
 setupSearchForm();
