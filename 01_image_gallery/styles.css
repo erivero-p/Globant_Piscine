@@ -64,7 +64,7 @@ h1 {
     margin-bottom: 1.5rem;
 }
 
-.search-form {
+#search-form {
     display: flex;
     gap: 0.5rem;
     margin-bottom: 1.5rem;
