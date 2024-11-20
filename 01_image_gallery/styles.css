@@ -110,7 +110,7 @@ button:hover {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
     transition: transform 0.3s ease;
 }
 
@@ -140,9 +140,9 @@ button:hover {
 .gallery-item img {
     width: 300px;
     height: 300px;
+    border-radius: 8px;
     object-fit: cover;
     overflow: hidden;
-    margin: 10px;
 }
 
 @media (max-width: 600px) {

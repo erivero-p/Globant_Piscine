@@ -76,6 +76,7 @@ function setupSearchForm() {
         input.value = '';
         const images = await fetchImages(query);
         renderGallery(images);
+        isFavoritesTab = false;
     });
 }
 
@@ -118,7 +119,7 @@ function toggleAuthenticationUI(isAuthenticated) {
     const gallery = document.getElementById('galleryContainer');
     const saved = document.getElementById('saved');
 
-    if (!isAuthenticated) {
+    if (isAuthenticated) {
         console.log('User is not authenticated');
         form.style.display = 'none'; // Hide the form
         logMsg.style.display = 'block'; // Show the login message
