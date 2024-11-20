@@ -104,8 +104,8 @@ app.get('/auth/unsplash', (req, res) => {
                 secure: false,
                 sameSite: 'Lax', // Ensure the cookie is sent with cross-site requests
             });
-    
-            res.redirect('localhost:5500/01_image_gallery/index.html');
+            console.log('Redirecting to gallery...');
+            res.redirect('http://localhost:5500/01_image_gallery/index.html');
         } catch (error) {
             console.error('Error in OAuth callback:', error);
             res.status(500).send('Internal server error during authentication');
@@ -147,6 +147,16 @@ app.get('/auth/check', (req, res) => {
         return res.status(401).json({ authenticated: false });
     }
     res.json({ authenticated: true });
+});
+
+app.post('/auth/logout', (req, res) => {
+  res.clearCookie('unsplash_access_token', {
+      httpOnly: true,
+      secure: false, // Set to true if using HTTPS
+      sameSite: 'Lax',
+  });
+  res.status(200).send('Logged out');
+  console.log('Logged out');
 });
 
 app.listen(port, () => {

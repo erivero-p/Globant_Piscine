@@ -40,5 +40,75 @@ function authenticate() {
     window.location.href = `${SERVER_URL}/auth/unsplash`;
 }
 
+async function checkAuthentication() {
+    try {
+        console.log('Checking authentication...');
+        const response = await fetch(`${SERVER_URL}/auth/check`, {
+            credentials: 'include', // Send cookies with the request
+        });
+
+        console.log('Response status:', response.status);
+
+        if (!response.ok) {
+            console.error('Authentication failed:', response.status);
+            toggleAuthenticationUI(false);
+            return;
+        }
+
+        const data = await response.json();
+        console.log('Authentication data:', data);
+
+        toggleAuthenticationUI(data.authenticated);
+    } catch (error) {
+        console.error('Error checking authentication', error);
+        toggleAuthenticationUI(false);
+    }
+}
+
+function toggleAuthenticationUI(isAuthenticated) {
+    const form = document.getElementById('search-form');
+    const logMsg = document.getElementById('log-req');
+    const logInBtn = document.getElementById('login-btn');
+    const logOutBtn = document.getElementById('logout-btn');
+    const gallery = document.getElementById('galleryContainer');
+
+    if (!isAuthenticated) {
+        console.log('User is not authenticated');
+        form.style.display = 'none'; // Hide the form
+        logMsg.style.display = 'block'; // Show the login message
+        logInBtn.style.display = 'block'; // Show the login button
+        logOutBtn.style.display = 'none'; // Hide the logout button
+        gallery.style.display = 'none'; // Hide the gallery
+    } else {
+        console.log('User is authenticated');
+        form.style.display = 'block'; // Show the form
+        logMsg.style.display = 'none'; // Hide the login message
+        logInBtn.style.display = 'none'; // Hide the login button
+        logOutBtn.style.display = 'block'; // Show the logout button
+    }
+}
+
+async function logout() {
+    
+    try {
+        const response = await fetch(`${SERVER_URL}/auth/logout`, {
+            method: 'POST',
+            credentials: 'include', // Send cookies with the request
+        });
+
+        if (response.ok) {
+            console.log('Logged out successfully');
+            toggleAuthenticationUI(false);
+        } else {
+            console.error('Logout failed:', response.status);
+        }
+    } catch (error) {
+        console.error('Error logging out:', error);
+    }
+}
+
+// Call checkAuthentication on page load
+window.addEventListener('load', checkAuthentication);
+
 // Initialize the form event listener
 setupSearchForm();
