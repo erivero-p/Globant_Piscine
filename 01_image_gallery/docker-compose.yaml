@@ -1,0 +1,22 @@
+services:
+  back:
+    build: 
+      context: .
+      dockerfile: back/Dockerfile
+    ports:
+      - "3000:3000"
+    env_file: .env
+    environment:
+      - UNSPLASH_ACCESS_KEY=${UNSPLASH_ACCESS_KEY}
+      - UNSPLASH_SECRET_KEY=${UNSPLASH_SECRET_KEY}
+      - UNSPLASH_REDIRECT_URI=${UNSPLASH_REDIRECT_URI}
+    container_name: back
+    restart: always
+  front:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    container_name: front
+    restart: always

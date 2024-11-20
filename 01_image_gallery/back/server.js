@@ -11,7 +11,7 @@ const port = 3000;
 
 app.use(
   cors({
-    origin: 'http://localhost:5500',
+    origin: 'http://localhost:8080',
     credentials: true,
   })
 );
@@ -105,7 +105,7 @@ app.get('/auth/unsplash', (req, res) => {
                 sameSite: 'Lax', // Ensure the cookie is sent with cross-site requests
             });
             console.log('Redirecting to gallery...');
-            res.redirect('http://localhost:5500/01_image_gallery/index.html');
+            res.redirect('http://localhost:8080/');
         } catch (error) {
             console.error('Error in OAuth callback:', error);
             res.status(500).send('Internal server error during authentication');
@@ -152,7 +152,7 @@ app.get('/auth/check', (req, res) => {
 app.post('/auth/logout', (req, res) => {
   res.clearCookie('unsplash_access_token', {
       httpOnly: true,
-      secure: false, // Set to true if using HTTPS
+      secure: false,
       sameSite: 'Lax',
   });
   res.status(200).send('Logged out');
