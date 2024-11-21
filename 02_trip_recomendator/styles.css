@@ -1,0 +1,27 @@
+:root {
+    --pink: #eccce7;
+    --blue: #8de1f0;
+    --greish: #d5eaee;
+    --light: #84CCA3;
+    --dp: #ca6f89;
+    --accent: #8d1437;
+}
+body, html {
+    height: 100%;
+    background: linear-gradient(to top, var(--dp), var(--accent));
+}
+
+#card {
+    color: white;
+    background-color: rgba(245, 245, 245, 0.209);
+}
+
+#search-button {
+    background-color: var(--accent);
+}
+
+.list-group-item {
+    background-color: rgba(245, 245, 245, 0.106);
+    color: white;
+    border: none;
+}
