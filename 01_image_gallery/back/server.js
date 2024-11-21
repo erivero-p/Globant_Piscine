@@ -25,7 +25,7 @@ const stateStore = new Map();
 
 
 app.get('/', (req, res) => {
-  res.send('Hello 42!');
+  res.send('Image Gallery API');
 });
 
 app.get('/get_unsplash_urls', async (req, res) => {
