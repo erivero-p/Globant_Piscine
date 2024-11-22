@@ -30,27 +30,42 @@
                                 <label for="animalInput" class="block text-sm font-medium text-gray-700">Animal</label>
                                 <input type="text" class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" id="animalInput" maxlength="100" placeholder="Animal" required>
                             </div>
-                            <div class="mb-3">
+         <!--                    <div class="mb-3">
                                 <label for="typeInput" class="block text-sm font-medium text-gray-700">Type</label>
                                 <input type="text" class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" id="typeInput" maxlength="100" placeholder="Type" required>
-                            </div>
+                            </div> -->
                             <div class="mb-3">
                                 <label for="abilityInput" class="block text-sm font-medium text-gray-700">Special Ability</label>
                                 <input type="text" class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" id="abilityInput" maxlength="100" placeholder="Special Ability" required>
                             </div>
                             <div class="mb-3">
-                                <label for="sizeSelect" class="block text-sm font-medium text-gray-700">Size</label>
+                                <label id="type" for="typeSelect" class="block text-sm font-medium text-gray-700">Type</label>
                                 <select class="form-select mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" id="sizeSelect" aria-label="Select Pokémon size" required>
-                                    <option value="" selected disabled hidden>Size</option>
-                                    <option value="small">Small</option>
-                                    <option value="medium">Medium</option>
-                                    <option value="large">Large</option>
-                                </select>
+                                    <option value="" selected disabled hidden>Type</option>
+                                    <option value="fire">Fire 🔥</option>
+                                    <option value="water">Water 💧</option>
+                                    <option value="grass">Grass 🌿</option>
+                                    <option value="ice">Ice ❄️</option>
+                                    <option value="fight">Fight 🥊</option>
+                                    <option value="fly">Fly 🕊️</option>
+                                    <option value="poison">Poison ☠️</option>
+                                    <option value="ground">Ground 🌍</option>
+                                    <option value="rock">Rock 🪨</option>
+                                    <option value="bug">Bug 🐛</option>
+                                    <option value="ghost">Ghost 👻</option>
+                                    <option value="steel">Steel 🛡️</option>
+                                    <option value="electric">Electric ⚡</option>
+                                    <option value="psychic">Psychic 🔮</option>
+                                    <option value="dragon">Dragon 🐉</option>
+                                    <option value="dark">Dark 🌑</option>
+                                    <option value="fairy">Fairy 🧚</option>
+                                    </select>
                             </div>
                             <div class="flex justify-center">
                                 <button type="submit" class="btn bg-blue-500 text-white px-4 py-2 rounded">Create Pokémon</button>
                             </div>
                         </form>
+                        <div class="flex justify-center p-2" id="pokemon-image"></div>
                     </div>
                 </div>
             </div>

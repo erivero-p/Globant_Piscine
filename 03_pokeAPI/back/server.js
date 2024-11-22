@@ -140,7 +140,7 @@ app.get('/unsplash/me', async (req, res) => {
 
 app.get('/auth/check', (req, res) => {
     const token = req.cookies.unsplash_access_token;
-    console.log("Checking for token:", token); // for debugging
+ //   console.log("Checking for token:", token); // for debugging
     if (!token) {
         console.log('No token found');
         return res.status(401).json({ authenticated: false });
@@ -156,6 +156,31 @@ app.post('/auth/logout', (req, res) => {
   });
   res.status(200).send('Logged out');
   console.log('Logged out');
+});
+
+app.post('/api/generate', async (req, res) => {
+  try {
+      console.log("promt: ", req.body);
+      console.log("generating image...");
+      const requestBody = {
+        ...req.body,
+        width: 256,
+        height: 256,
+        steps: 20,
+        cfg_scale: 5
+      };
+
+      const response = await fetch('http://stable-diffusion.42malaga.com:7860/sdapi/v1/txt2img', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestBody)
+      });
+      const data = await response.json();
+      console.log("image generated!");
+      res.json(data);
+  } catch (error) {
+      res.status(500).send({ error: 'Error connecting to Stable Diffusion API' });
+  }
 });
 
 app.listen(port, () => {
