@@ -24,35 +24,12 @@ const stateStore = new Map();
 
 
 app.get('/', (req, res) => {
-  res.send('Image Gallery API');
+  res.send('pokeAPI API');
 });
 
-app.get('/get_unsplash_urls', async (req, res) => {
-  const query = req.query['search'];
-  const apiKey = process.env.UNSPLASH_ACCESS_KEY;
-
-  try {
-    const response = await fetch(`https://api.unsplash.com/search/photos?query=${query}&client_id=${apiKey}`);
-    if (!response.ok) {
-      console.error('Error response from Unsplash API:', response.status, response.statusText);
-      return res.status(response.status).send('Error fetching images from Unsplash');
-    }
-    const data = await response.json();
-
-    let toSend = [];
-    data.results.forEach((result) => {
-      toSend.push(result.urls.small);
-    });
-
-    return res.send(toSend);
-  } catch (error) {
-    console.error('Error fetching images on back', error);
-    return res.status(500).send('Error fetching images');
-  }
-});
-
-// OAuth2 endpoints
-
+// Im reusing ImageGallery oauth for saving time
+//but it will be more apropiate to make oauth with github or 42
+ 
 app.get('/auth/unsplash', (req, res) => {
     const state = crypto.randomBytes(16).toString('hex');
     stateStore.set(state, Date.now());
@@ -140,7 +117,6 @@ app.get('/unsplash/me', async (req, res) => {
 
 app.get('/auth/check', (req, res) => {
     const token = req.cookies.unsplash_access_token;
- //   console.log("Checking for token:", token); // for debugging
     if (!token) {
         console.log('No token found');
         return res.status(401).json({ authenticated: false });
@@ -169,7 +145,7 @@ app.post('/api/generate', async (req, res) => {
         steps: 20,
         cfg_scale: 5
       };
-
+      // Im asking for so low resolution and only 20 steps because the API is slow
       const response = await fetch('http://stable-diffusion.42malaga.com:7860/sdapi/v1/txt2img', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
