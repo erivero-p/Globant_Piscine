@@ -1,0 +1,35 @@
+
+#search-container {
+    /* background-color: rgb(68, 68, 68); */
+    padding: 6px;
+    border-radius: 25px;
+}
+
+#search-form {
+    /* background-color: rgb(68, 68, 68); */
+    border: none;
+}
+
+#loginBtn {
+    background-color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 25px;
+    padding: 6px 12px;
+}
+
+.scrolling-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: scroll 10s linear infinite;
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+}
