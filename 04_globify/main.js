@@ -1,4 +1,4 @@
-let isAuthenticated = false;
+let isAuthenticated = true;
 
 document.addEventListener('DOMContentLoaded', () => {
     isAuthenticated = localStorage.getItem("accessToken") !== null;
@@ -46,31 +46,43 @@ function toggleAuthentication() {
     userMenu.style.display = isAuthenticated ? 'block' : 'none';
     mainContent.style.display = isAuthenticated ? 'block' : 'none';
     welcomeCard.style.display = isAuthenticated ? 'none' : 'block';
-    
 }
 
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
+function getRandomGradient() {
+    const color1 = getRandomColor();
+    const color2 = getRandomColor();
+    return `linear-gradient(to bottom right, ${color1}, ${color2})`;
+}
 
 function populateRecentlyPlayed() {
     const recentlyPlayedContainer = document.querySelector('#recently-played .grid');
     const recentlyPlayedSongs = [
-        { title: "Shake It Off", artist: "Taylor Swift", cover: "https://example.com/cover1.jpg" },
-        { title: "Blinding Lights", artist: "The Weeknd", cover: "https://example.com/cover2.jpg" },
-        { title: "Shape of You", artist: "Ed Sheeran", cover: "https://example.com/cover3.jpg" },
-        { title: "Dance Monkey", artist: "Tones and I", cover: "https://example.com/cover4.jpg" },
-        { title: "Someone Like You", artist: "Adele", cover: "https://example.com/cover5.jpg" },
-        { title: "Uptown Funk", artist: "Mark Ronson ft. Bruno Mars", cover: "https://example.com/cover6.jpg" },
-        { title: "Despacito", artist: "Luis Fonsi & Daddy Yankee ft. Justin Bieber", cover: "https://example.com/cover7.jpg" },
-        { title: "Bad Guy", artist: "Billie Eilish", cover: "https://example.com/cover8.jpg" }
+        { title: "Florida!!!", artist: "Taylor Swift" },
+        { title: "No Hard Feelings", artist: "Wolf Alice" },
+        { title: "A Team", artist: "Ed Sheeran" },
+        { title: "UFO", artist: "Olivia Dean" },
+        { title: "Someone Like You", artist: "Adele" },
+        { title: "Wasting my young years", artist: "London Grammar" },
+        { title: "Dreams", artist: "Fleetwood Mac" },
+        { title: "Chihiro", artist: "Billie Eilish" }
     ];
 
     recentlyPlayedSongs.forEach(song => {
         const songCard = document.createElement('div');
-        songCard.className = 'bg-gray-700 p-4 rounded-lg shadow-md';
+        songCard.className = 'bg-gray-700 rounded-lg shadow-md flex items-center';
+        const randomColor = getRandomColor();
         songCard.innerHTML = `
-            <img src="${song.cover}" alt="${song.title}" class="w-full h-32 object-cover rounded-md mb-2">
+            <div class="h-14 w-14 mr-2 rounded-tl-md rounded-bl-md" style="background-color: ${randomColor};"></div>
             <h3 class="text-white font-semibold">${song.title}</h3>
-            <p class="text-gray-400 text-sm">${song.artist}</p>
         `;
         recentlyPlayedContainer.appendChild(songCard);
     });
@@ -79,19 +91,20 @@ function populateRecentlyPlayed() {
 function populatePlaylistsForYou() {
     const playlistsContainer = document.querySelector('#playlist-for-you .grid');
     const playlists = [
-        { title: "Chill Vibes", description: "Relax and unwind with these smooth tracks", cover: "https://example.com/playlist1.jpg" },
-        { title: "Workout Mix", description: "High-energy songs to fuel your exercise", cover: "https://example.com/playlist2.jpg" },
-        { title: "90s Throwback", description: "Take a trip down memory lane", cover: "https://example.com/playlist3.jpg" },
-        { title: "Indie Discoveries", description: "Fresh finds from independent artists", cover: "https://example.com/playlist4.jpg" },
-        { title: "Classical Essentials", description: "Timeless compositions from the masters", cover: "https://example.com/playlist5.jpg" },
-        { title: "Party Anthems", description: "Get the party started with these hits", cover: "https://example.com/playlist6.jpg" }
+        { title: "Chill Vibes", description: "Relax and unwind with these smooth tracks" },
+        { title: "Workout Mix", description: "High-energy songs to fuel your exercise" },
+        { title: "90s Throwback", description: "Take a trip down memory lane" },
+        { title: "Indie Discoveries", description: "Fresh finds from independent artists" },
+        { title: "Classical Essentials", description: "Timeless compositions from the masters" },
+        { title: "Party Anthems", description: "Get the party started with these hits" }
     ];
 
     playlists.forEach(playlist => {
         const playlistCard = document.createElement('div');
         playlistCard.className = 'bg-gray-700 p-4 rounded-lg shadow-md';
+        const randomGradient = getRandomGradient();
         playlistCard.innerHTML = `
-            <img src="${playlist.cover}" alt="${playlist.title}" class="w-full h-40 object-cover rounded-md mb-2">
+            <div class="w-full h-40 rounded-md mb-2" style="background: ${randomGradient};"></div>
             <h3 class="text-white font-semibold">${playlist.title}</h3>
             <p class="text-gray-400 text-sm">${playlist.description}</p>
         `;
