@@ -34,7 +34,7 @@
         </div>
     </nav>
     <main class="bg-gray-700" style="height: 100vw;">
-        <div id="welcome-card" class="container mx-auto mt-5 bg-gray-900 p-6 rounded-lg shadow-lg text-white">
+        <div id="welcome-card" class="container mx-auto mt-5 bg-gray-900 p-6 rounded-lg shadow-lg text-white" style="display: none;">
             <div class="col-lg-6 col-md-12 mb-4 mx-auto">
                 <h1 class="text-center text-3xl font-bold mb-4">Welcome to Globify!</h1>
                 <div id="loginMessage" class="alert alert-info text-center mb-4" role="alert">
@@ -42,8 +42,8 @@
                 </div>
             </div>
         </div>
-            <div id="main-content" class="container mt-2 mx-auto bg-gradient-to-b from-gray-800 to-gray-700 p-6 rounded-lg" style="display: none;">
-                <div class="container">
+              <div id="main-content" class="container mt-2 mx-auto bg-gradient-to-b from-gray-800 to-gray-700 p-6 rounded-lg flex">
+                <div class="w-2/3 pr-4">
                     <div id="recently-played" class="mb-8">
                         <h2 class="text-2xl font-bold text-white mb-4">Recently Played</h2>
                         <div class="grid grid-cols-4 md:grid-cols-2 gap-4">
@@ -57,7 +57,22 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                <div id="side-content" class="w-full md:w-1/3 bg-gray-700 rounded-lg relative overflow-hidden">
+                    <div id="bg-img" class="h-full flex flex-col justify-between bg-cover bg-center relative">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900"></div>
+                        <h1 class="text-white text-lg font-bold mt-4 px-4 relative z-10">The Tortured Poets Department</h1>
+                        <div id="footer" class="w-full mb-3 relative z-10">
+                            <h2 class="text-white text-lg font-bold mt-4 px-4">Florida!!!</h2>
+                            <div class="text-white text-sm px-4">Taylor Swift, Florence + The Machine</div>
+                            <div id="artist-info" class="mt-4 mx-4 rounded-lg overflow-hidden">
+                                <div class="bg-center h-64 w-full relative">
+                                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-end p-4">
+                                        <h3 class="text-white text-sm">Information about the artist</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
     </main>
     <div class="fixed bottom-0 bg-gray-900 text-white w-full">
         <div class="mx-auto flex p-4">
@@ -66,7 +81,7 @@
                 <img src="https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa" alt="Album cover" class="w-14 h-14 mr-4 flex-shrink-0">
                 <div class="flex flex-col overflow-hidden">
                     <div class="font-bold text-sm whitespace-nowrap overflow-hidden" style="max-width: 200px;">
-                        <div class="scrolling-text">Florida!! (feat Florence + the Machine)</div>
+                        <div class="scrolling-text">Florida!!! (feat Florence + the Machine)</div>
                     </div>
                     <div class="text-xs text-gray-400 whitespace-nowrap overflow-hidden" style="max-width: 200px;">
                         <div class="scrolling-text">Taylor Swift, Florence and The Machine</div>
